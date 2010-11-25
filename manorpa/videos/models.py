@@ -9,7 +9,7 @@ from tagging_autocomplete.models import TagAutocompleteField
 
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
-add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
+add_introspection_rules([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
 
 class Video(models.Model):
     '''Modelo que representa el tipo de contenido para Videos en este caso solo para funcionar con youtube'''
