@@ -1,0 +1,65 @@
+ {%extends "base.html"%}
+ {%block extra_header%}
+<script type="text/javascript"> 
+    $(document).ready(function() {
+    $("#estemes").show();
+    $("#proximomes").hide();
+    $("#enlace_estemes").click(function(){
+        $("#estemes").show();
+        $("#proximomes").hide();
+        return false;
+    });
+    
+    $("#enlace_proximomes").click(function(){
+        $("#estemes").hide();
+        $("#proximomes").show();
+        return false;
+    });
+ 
+    });
+</script> 
+ {%endblock%}
+
+ {%block contenido%}
+    <div id="inicio_izq" class="izq">
+        <div class="bloque_inicio">
+            <h2>AMUNSE</h2>
+            <img src="{{MEDIA_URL}}/imagen/logo_index.jpg" align="right" style="float:right"><p>AMUNSE  es la asociación de los 12 municipios del departamento de Nueva Segovia, Nicaragua,que nace en 1997;  integrada por las autoridades elegidas y representativas, constituida oficialmente a través de su personería jurídica y estatutos e integrada de forma voluntaria sobre la base de los principios de cooperación mutua, equidad de género, justicia social y pluralismo político que facilita el desarrollo socio económico y cultural en los municipios miembros</p>
+        </div>
+        <div class="bloque_inicio">
+            <h2>Próximos Eventos</h2>
+            <div class="enlaces_inicio">
+                <a id="enlace_estemes" href="#">Este mes</a> <a id="enlace_proximomes" href="#" class="con_flechita">Próximo mes </a> <a href="/eventos" class="con_flechita">Todos los eventos</a> 
+            </div>
+            <div id="estemes">
+                <div class="separador"></div><br>
+                {%for eventos in eventos%}
+                <div class="fecha_evento">{{eventos.fecha_inicio|date:"d M"}}</div>
+                <div class="titulo_evento"><a href="/eventos/evento/{{eventos.slug}}">{{eventos.titulo}}</a></div>
+                <div class="separador"></div><br>
+                {%endfor%}
+            </div>
+            <div id="proximomes">
+                <div class="separador"></div><br>
+                {%for eventos_prox in eventos_prox%}
+                <div class="fecha_evento">{{eventos_prox.fecha_inicio|date:"d M"}}</div>
+                <div class="titulo_evento"><a href="/eventos/evento/{{eventos_prox.slug}}">{{eventos_prox.titulo}}</a></div>
+                <div class="separador"></div><br>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    <div id="inicio_der" class="der">
+        <h2>Noticias</h2>
+        {% for noticia in noticia %}
+        <div class="contenedor_noticia_inicio">
+            {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
+            <a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
+            <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
+        </div>
+        {%endfor%}
+        <div class="enlaces_inicio">
+            <a class="con_flechita" href="/noticias">Todas las noticias</a>
+        </div>
+    </div>
+ {% endblock %}

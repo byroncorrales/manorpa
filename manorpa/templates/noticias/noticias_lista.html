@@ -1,0 +1,61 @@
+ {%extends "interna.html"%}
+ {%block title%}Noticias{%endblock%}
+ {%block extra_header%}
+<script type="text/javascript">
+    function mandacategoria(form){
+        var cat_slug = form.categoria.value;
+            if (cat_slug){
+                var url="/noticias/categoria/" + cat_slug;
+            }else
+            {
+                var url="/noticias/";
+            }
+
+        window.location = url;
+    }
+</script>
+ {%endblock%}
+    {%block cuerpo%}
+        <h2>Noticias</h2>
+        <div id="acciones">
+            <form name="formulario" action="" method="get">
+                        <div class="label">Categorias </div>
+                        <select id="id_categoria" name="categoria" >  
+                            <option value="">-------</option>
+                            {%for categoria_noticia in categoria_noticia%}
+                            <option value="{{categoria_noticia.slug}}">{{categoria_noticia.nombre}}</option>
+                            {%endfor%}
+                        <input id="id_boton" type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
+            </form>
+        </div>
+        
+        <div class="lista">
+            {%for noticia in noticias.object_list%}
+            <div class="elemento_lista">
+                    {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
+                    <div class="titulo"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
+                    {{noticia.contenido|truncatewords_html:50|safe}}
+                    <div class="seguir_leyendo izq"><a class="con_flechita" href="/noticias/{{noticia.slug}}">Seguir leyendo</a></div>
+                    <div class="categoria_noticia der"><b>Categoria:</b> <i><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria}}</a></i></div>
+                    <div class="separador"></div>
+            </div>
+            {%endfor%}
+            <div class="paginacion">
+                <span class="pagina-links">
+                {% if noticias.has_previous %}
+                <a href="?page={{ noticias.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% endif %}
+
+                <span class="actual">
+                    Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                </span>
+
+                {% if noticias.has_next %}
+                    <a href="?page={{ noticias.next_page_number }}" class="pag_der">Siguiente</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+    {%endblock %}
+
+ 
