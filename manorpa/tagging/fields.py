@@ -105,3 +105,4 @@ class TagField(CharField):
         defaults = {'form_class': forms.TagField}
         defaults.update(kwargs)
         return super(TagField, self).formfield(**defaults)
+

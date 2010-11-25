@@ -488,3 +488,5 @@ class TaggedItem(models.Model):
 
     def __unicode__(self):
         return u'%s [%s]' % (self.object, self.tag)
+
+

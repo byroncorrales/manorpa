@@ -18,3 +18,4 @@ class TagAutocompleteField(TagField):
             defaults['widget'] = TagAutocomplete
 
         return super(TagAutocompleteField, self).formfield(**defaults)
+
