@@ -10,7 +10,7 @@ from tagging.models import Tag
 from tagging_autocomplete.models import TagAutocompleteField
 from thumbs import ImageWithThumbsField
 from manorpa.utils import get_image_path
-add_introspection_rules = ([], ["^manorpa\.tagging_autocomplete\.models\.TagAutocompleteField"]) 
+add_introspection_rules([], ["^manorpa\.tagging_autocomplete\.models\.TagAutocompleteField"]) 
 
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
