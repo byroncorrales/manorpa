@@ -12,8 +12,9 @@ class Municipio(models.Model):
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
     documentacion = models.ForeignKey(SubCategoriaDocumento,verbose_name='categoria en documentación')
     caracterizacion = models.TextField('Caracterizacion General',blank = True, null = True)
-    ubicacion = models.TextField('Ubicación Geográfica',blank = True, null = True)
-    historia = models.TextField('Historia General',blank = True, null = True)
+    pontencialidades = models.TextField('Potencialidades',blank = True, null = True)
+    gobierno = models.TextField('Gobierno local',blank = True, null = True)
+    enlaces = models.TextField('Enlaces locales',blank = True, null = True)
 #    adjunto = generic.GenericRelation(Adjunto)
 
     def __unicode__(self):

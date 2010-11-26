@@ -180,7 +180,7 @@ b{
     float: left;
     display: inline-block;
 }
-#acordion ul li div{
+#acordion ul li .welcome, #acordion ul li .a1{
     display: block;
     overflow: hidden;
     height: 160px;
@@ -192,7 +192,7 @@ b{
   -webkit-box-shadow: -2px -1px 12px #000;	
   border-left:#A9A9A9 1px solid;
 }
-#acordion ul li div.welcome{
+#acordion ul li .welcome{
     width: 418px;
 }
 #acordion ul li img{
@@ -217,6 +217,12 @@ b{
     cursor: default;
 
 }
+
+#acordion ul li .submenu_elementos{
+background:#000;
+
+}
+
 #acordion .zona_title{
     font-size: 16px;
     background:url(../imagen/fondo_menu_titulo.png);
@@ -231,11 +237,11 @@ b{
     margin-bottom:2px;
     border-bottom:#d7d7d0 1px solid;
 }
-#acordion ul li div.welcome{
+#acordion ul li .welcome{
 	background-repeat: no-repeat;
 	background-position: left top;
 }
-#acordion ul li div.a1{
+#acordion ul li .a1{
 	background-repeat: no-repeat;
 	background-position: left top;
 }

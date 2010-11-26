@@ -8,6 +8,11 @@ class CategoriaNoticiaAdmin(admin.ModelAdmin):
     list_filter = ['nombre']
     list_per_page = 12
 
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ['nombre']
+    list_filter = ['nombre']
+
+
 class AdjuntoInline(generic.GenericStackedInline):
     model = Adjunto
     extra = 1
@@ -26,22 +31,21 @@ class NoticiaAdmin(admin.ModelAdmin):
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js',]
 
-#class ComentarioAdmin(admin.ModelAdmin):
-#    list_display = ['nombre', 'fecha','estado','noticia' ]
-#    list_filter = ['estado']
-#    search_fields = ['nombre']
-#    save_on_top = True
-#    date_hierarchy = 'fecha'
-#    actions = ['publicar','nopublicar']
-
-#    def publicar(self, request, queryset):
-#        queryset.update(estado=True)
-#    publicar.short_description = "Marcar los comentarios como publicados"
+class EditorialAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'fecha','autor']
+    list_filter = ['autor']
+    search_fields = ['titulo']
+    save_on_top = True
+    date_hierarchy = 'fecha'
+    list_per_page = 12
     
-#    def nopublicar(self, request, queryset):
-#        queryset.update(estado=False)
-#    nopublicar.short_description = "Marcar los comentarios como No Publicados"
+    class Media:
+        js = ['../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js',]
 
+
+admin.site.register(Autor, AutorAdmin)
+admin.site.register(Editorial, EditorialAdmin)
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)
 #admin.site.register(Comentario, ComentarioAdmin)

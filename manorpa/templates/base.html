@@ -50,7 +50,7 @@ $(document).ready(function(){
            <a href="/noticias/feed"><img id="rss" src="{{MEDIA_URL}}imagen/rss.jpg"></a>
     </div>
   </div>
-  {%cache 900 menu%}
+
   <div id="acordion" class="centro">
         <ul>        
           {%for menu_primario in menu_primario%}
@@ -64,18 +64,20 @@ $(document).ready(function(){
                     {{menu_primario.titulo}}
                </p>
                <p class="h">
+                    <div class="submenu_elementos">
                  {%for menu_secundario in menu_secundario%}
                       {% if menu_secundario.menuprimario.id == menu_primario.id %}
                       <a href="{%if menu_secundario.pagina%}/paginas/{{menu_secundario.pagina.slug}}{%else%}{{menu_secundario.url}}{%endif%}">{{menu_secundario.titulo}}</a>
                       {%endif%}
                  {%endfor%}
+                    </div>
                </p>
             </div>
           </li>
           {%endfor%}
         </ul>
   </div>
-  {%endcache%}
+
   <div id="contenedor" class="centro">
      <div id="contenido_izq" class="izq">
      {%block contenido%}

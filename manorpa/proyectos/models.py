@@ -21,8 +21,8 @@ class Financiador(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name = "Financiador"
-        verbose_name_plural = "Financiadores"
+        verbose_name = "Cooperante"
+        verbose_name_plural = "Cooperantes"
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
@@ -36,8 +36,8 @@ class Area(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name = "Area"
-        verbose_name_plural = "Areas"
+        verbose_name = "Eje Estratégico"
+        verbose_name_plural = "Ejes Estratégicos"
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
@@ -52,10 +52,10 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField('Fecha de inicio',blank = True, null = True)
     fecha_final = models.DateField('Fecha final',blank = True, null = True)
     estado = models.IntegerField('Estado actual',choices=ESTADO_CHOICES)
-    area = models.ManyToManyField(Area, verbose_name ='Areas institucionales')
-    financiador = models.ManyToManyField(Financiador, verbose_name ='Financiadores')
-    objetivos = models.TextField('Objetivos',blank = True, null = True)
-    resultados = models.TextField('Resultados',blank = True, null = True)
+    area = models.ManyToManyField(Area, verbose_name ='Ejes Estrategicos')
+    financiador = models.ManyToManyField(Financiador, verbose_name ='Cooperantes')
+    descripcion = models.TextField('Descripción',blank = True, null = True)
+#    resultados = models.TextField('Resultados',blank = True, null = True)
 
     def __unicode__(self):
         return self.nombre
