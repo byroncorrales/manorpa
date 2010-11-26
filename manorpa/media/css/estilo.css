@@ -218,9 +218,11 @@ b{
 
 }
 
-#acordion ul li .submenu_elementos{
-background:#000;
-
+.submenu_elementos{
+    background:#000;
+    margin-left:270px;
+    background:url(../imagen/fondo_submenu.png);
+    height:135px;
 }
 
 #acordion .zona_title{
@@ -234,7 +236,7 @@ background:#000;
     color:#fff;
     padding-left:5px;
     padding-top:5px;
-    margin-bottom:2px;
+
     border-bottom:#d7d7d0 1px solid;
 }
 #acordion ul li .welcome{
@@ -247,18 +249,17 @@ background:#000;
 }
 
 #acordion a, #acordion a:visited{
-    color:#444744;
+    color:#fff;
     font-weight:bold;
     text-decoration:none;
     display:block;
-    height:22px;
+    height:21px;
     width:140px;
     background:url(../imagen/fondo_subenlace.png);
     background-position:left bottom;
-    margin-left:270px;
-    padding-top:7px;
+    font-size:11px;
+    padding-top:5px;
     padding-right:10px;
-    margin-bottom:5px;
     text-align: right;
 }
 
@@ -296,8 +297,15 @@ background:#000;
     background:url(../imagen/fondo_repetido_final.png);
     background-repeat:repeat-y;
     height:132px;
+    margin-bottom:10px;
 }
 
+#pinitos{
+    width:100%;
+    background:url(../imagen/pinitos.jpg);
+    background-repeat:repeat-x;
+    height:170px;
+}
 #contenido_izq{
     width:740px;
 }
@@ -767,8 +775,8 @@ margin-left:4px;
 #acciones_municipio{
     background:#91c45f ;
     background-repeat:no-repeat;
-    width:400px;
-    height:25px;
+    width:560px;
+    height:23px;
     margin-top:-5px;
     margin-bottom:10px;
     padding-top:3px;
@@ -785,8 +793,8 @@ margin-left:4px;
     text-decoration:none;
     color:#fff;
     font-weight:bold;
-    margin-right:15px;
-    font-size:15px;
+    margin-right:10px;
+    font-size:14px;
 }
 
 #acciones_municipio a:hover{
@@ -1089,7 +1097,7 @@ display:block;
 }
 
 #rss{float:right;margin-left:10px;}
-#boton_contacto{float:right;margin-left:140px;}
+#boton_contacto{float:right;margin-left:60px;}
 /* Termina Contenido*/
 
 /* Comienza Footer */
@@ -1105,7 +1113,7 @@ display:block;
     padding-top:15px;
     font-size:12px;
     height:30px;
-    width:620px;
+    width:720px;
     text-align:center;
 }
 

@@ -29,7 +29,7 @@ class Financiador(models.Model):
         super(Financiador, self).save(force_insert, force_update)
         
 class Area(models.Model):
-    nombre = models.CharField('Área', max_length = 150,unique = True,blank = False, null = False)
+    nombre = models.CharField('Eje Estratégico', max_length = 150,unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 150, unique = True,help_text = 'unico Valor',editable=False)
 
     def __unicode__(self):

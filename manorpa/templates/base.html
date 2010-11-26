@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{%block title%}{%endblock%} AMUNSE</title>
+    <title>{%block title%}{%endblock%} MANORPA</title>
     <link href="{{MEDIA_URL}}css/estilo.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.4.2.min.js"></script>
     <link REL="SHORTCUT ICON" HREF="{{MEDIA_URL}}/imagen/favicon.ico">
@@ -84,33 +84,22 @@ $(document).ready(function(){
      
      {% endblock %}
      </div>
-  {%cache 900 sidebar%}
+
      <div id="municipios" class="der">
          {%for municipio in municipio%}
             <a href="/municipios/{{municipio.slug}}">{{municipio.nombre}}</a>
          {%endfor%}
      </div>
-   {%endcache%}
+
      <div class="separador"></div>
   </div>
   <div id ="final_contenedor" class="centro"></div>
+  <div id ="pinitos" class="centro"></div>
   <div id="footer">
     <div id="footer_contenedor" class="centro">
-        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por <a href="http://www.simas.org.ni">SIMAS</a> bajo plataforma <a href="http://www.djangoproject.org">Django</a>
+        <b>MANORPA</b> Mancomunidad de Municipios del Norte de el Paraiso | Desarrollado por <a href="http://www.simas.org.ni">SIMAS</a> bajo plataforma <a href="http://www.djangoproject.org">Django</a>
     </div>
   </div>
-<script type="text/javascript">
 
- var _gaq = _gaq || [];
- _gaq.push(['_setAccount', 'UA-19280448-1']);
- _gaq.push(['_trackPageview']);
-
- (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
- })();
-
-</script>
 </body>
 </html>

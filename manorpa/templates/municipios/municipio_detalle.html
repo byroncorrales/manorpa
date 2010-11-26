@@ -5,27 +5,39 @@
 <script type="text/javascript"> 
 $(document).ready(function() {
     $("#caracterizacion").show();
-    $("#historia").hide();
-    $("#ubicacion").hide();
+    $("#potencialidad").hide();
+    $("#gobierno").hide();
+    $("#enlaces").hide();
     
     $("#caracterizacion_e").click(function(){
         $("#caracterizacion").show();
-        $("#historia").hide();
-        $("#ubicacion").hide();
+        $("#potencialidad").hide();
+        $("#gobierno").hide();
+        $("#enlaces").hide();
         return false;
     });
     
-    $("#historia_e").click(function(){
+    $("#potencialidad_e").click(function(){
         $("#caracterizacion").hide();
-        $("#historia").show();
-        $("#ubicacion").hide();
+        $("#potencialidad").show();
+        $("#gobierno").hide();
+        $("#enlaces").hide();
         return false;
     });
 
-    $("#ubicacion_e").click(function(){
+    $("#gobierno_e").click(function(){
         $("#caracterizacion").hide();
-        $("#historia").hide();
-        $("#ubicacion").show();
+        $("#potencialidad").hide();
+        $("#gobierno").show();
+        $("#enlaces").hide();
+        return false;
+    });
+
+    $("#enlaces_e").click(function(){
+        $("#caracterizacion").hide();
+        $("#potencialidad").hide();
+        $("#gobierno").hide();
+        $("#enlaces").show();
         return false;
     });
 });
@@ -36,8 +48,9 @@ $(document).ready(function() {
         <h2>Municipio de {{m.nombre}}</h2>
         <div id="acciones_municipio">
             <a id ="caracterizacion_e" href="#">Caracterización</a>
-            <a id ="ubicacion_e" href="#">Ubicación</a>
-            <a id ="historia_e" href="#">Historia</a>
+            <a id ="potencialidad_e" href="#">Potencialidades</a>
+            <a id ="gobierno_e" href="#">Gobiernos locales</a>
+            <a id ="enlaces_e" href="#">Enlaces</a>
             <a href="/documentos/{{m.documentacion.categoria.slug}}/{{m.documentacion.slug}}">Documentos</a>
         </div>
 
@@ -46,13 +59,17 @@ $(document).ready(function() {
                 <p><b>CARACTERIZACION</b></p>
                 {{m.caracterizacion|safe}}
             </div>
-            <div id="ubicacion">
-                <p><b>UBICACION</b></p>
-                {{m.ubicacion|safe}}
+            <div id="potencialidad">
+                <p><b>POTENCIALIDADES</b></p>
+                {{m.pontencialidades|safe}}
             </div>
-            <div id="historia">
-                <p><b>HISTORIA</b></p>
-                {{m.historia|safe}}
+            <div id="gobierno">
+                <p><b>GOBIERNO LOCAL</b></p>
+                {{m.gobierno|safe}}
+            </div>
+            <div id="enlaces">
+                <p><b>ENLACES</b></p>
+                {{m.enlaces|safe}}
             </div>
         </div>
         <br>        

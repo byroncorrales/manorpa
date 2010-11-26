@@ -18,7 +18,7 @@
         <h2>Proyectos</h2>
         <div id="acciones">
             <form name="formulario" action="" method="get">
-                        <div class="label">Areas </div>
+                        <div class="label">Ejes </div>
                         <select id="id_categoria" name="area" >  
                             <option value="">-------</option>
                             {%for area in area%}
@@ -33,7 +33,7 @@
             <div class="elemento_lista">
                     <div class="titulo"><a href="/proyectos/{{proyecto.slug}}">{{proyecto.nombre}}</a></div>
                     <div class="categoria_noticia der">
-                    <b>Areas:</b> 
+                    <b>Ejes estratégicos:</b> 
                     <i>{%for area in proyecto.area.all%}
                             <a href="/proyectos/area/{{area.slug}}">{{area}}</a> | 
                         {%endfor%}

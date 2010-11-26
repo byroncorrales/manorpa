@@ -16,10 +16,10 @@
  {%endblock%}
 
     {%block cuerpo%}
-        <h2>Proyectos de area {{area_sel.nombre}}</h2>
+        <h2>Proyectos de  {{area_sel.nombre}}</h2>
         <div id="acciones">
             <form name="formulario" action="" method="get">
-                        <div class="label">Areas </div>
+                        <div class="label">Ejes </div>
                         <select id="id_categoria" name="area" >  
                             <option value="">-------</option>
                             {%for area in area%}
@@ -34,7 +34,7 @@
             <div class="elemento_lista">
                     <div class="titulo"><a href="/proyectos/{{proyecto.slug}}">{{proyecto.nombre}}</a></div>
                     <div class="categoria_noticia der">
-                    <b>Area:</b> 
+                    <b>Ejes estratégicos:</b> 
                     <i>{{area_sel.nombre}}</i>
                     </div>
                     <div class="separador"></div>
