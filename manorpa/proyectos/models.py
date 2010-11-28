@@ -12,7 +12,7 @@ ESTADO_CHOICES = (
 )
 
 class Financiador(models.Model):
-    nombre = models.CharField('Financiador', max_length = 150,unique = True,blank = False, null = False)
+    nombre = models.CharField('Cooperante', max_length = 150,unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 150, unique = True,help_text = 'unico Valor',editable=False)
     logo = ImageWithThumbsField(upload_to='attachments/logos', sizes=((150,150),(250,250)), blank = True, null = True)
     enlace = models.URLField('Enlace',verify_exists=True,blank = True, null = True, help_text='ej: http://www.manorpa.org')
@@ -29,15 +29,15 @@ class Financiador(models.Model):
         super(Financiador, self).save(force_insert, force_update)
         
 class Area(models.Model):
-    nombre = models.CharField('Eje Estratégico', max_length = 150,unique = True,blank = False, null = False)
+    nombre = models.CharField('Area', max_length = 150,unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 150, unique = True,help_text = 'unico Valor',editable=False)
 
     def __unicode__(self):
         return self.nombre
 
     class Meta:
-        verbose_name = "Eje Estratégico"
-        verbose_name_plural = "Ejes Estratégicos"
+        verbose_name = "Area"
+        verbose_name_plural = "Areas"
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
@@ -52,7 +52,7 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField('Fecha de inicio',blank = True, null = True)
     fecha_final = models.DateField('Fecha final',blank = True, null = True)
     estado = models.IntegerField('Estado actual',choices=ESTADO_CHOICES)
-    area = models.ManyToManyField(Area, verbose_name ='Ejes Estrategicos')
+    area = models.ManyToManyField(Area, verbose_name ='Area')
     financiador = models.ManyToManyField(Financiador, verbose_name ='Cooperantes')
     descripcion = models.TextField('Descripción',blank = True, null = True)
 #    resultados = models.TextField('Resultados',blank = True, null = True)

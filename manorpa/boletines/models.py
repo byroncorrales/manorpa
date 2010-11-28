@@ -43,6 +43,8 @@ class Boletin(models.Model):
     class Meta:
         verbose_name = "Publicación"
         verbose_name_plural = "Publicaciones"
+        app_label = 'Publicaciones'
+        db_table = 'boletines_boletin'
     
     def save(self, force_insert=False, force_update=False):
         try:
