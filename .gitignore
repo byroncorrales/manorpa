@@ -1,4 +1,4 @@
-amunse/media/attachments/
+manorpa/media/attachments/
 amunse/nbproject/
 *.pyc
 *.pyo
@@ -7,7 +7,7 @@ local_settings.py
 *.sqlite3
 *.swp
 /media/profile/*.*
-amunse/media/attachments/*.*
+manorpa/media/attachments/*.*
 *.pdf
 *.xls
 *.doc
