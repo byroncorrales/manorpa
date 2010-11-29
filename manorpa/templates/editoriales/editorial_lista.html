@@ -1,0 +1,38 @@
+ {%extends "interna.html"%}
+ {%block title%}Editoriales{%endblock%}
+ {%block extra_header%}
+
+ {%endblock%}
+    {%block cuerpo%}
+        <h2>Editoriales</h2>
+
+        
+        <div class="lista">
+            {%for editorial in editoriales.object_list%}
+            <div class="elemento_lista">
+                    {%if editorial.autor.imagen %}<a href="/editoriales/{{editorial.slug}}"><img src="{{editorial.autor.imagen.url_75x95}}"></a>{%endif%}
+                    <div class="titulo"><a href="/editoriales/{{editorial.slug}}">{{editorial.titulo}}</a></div>
+                    {{editorial.contenido|truncatewords_html:50|safe}}
+                    <div class="seguir_leyendo izq"><a class="con_flechita" href="/editoriales/{{editorial.slug}}">Seguir leyendo</a></div>
+                    <div class="separador"></div>
+            </div>
+            {%endfor%}
+            <div class="paginacion">
+                <span class="pagina-links">
+                {% if editoriales.has_previous %}
+                <a href="?page={{ editoriales.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% endif %}
+
+                <span class="actual">
+                    Página {{ editoriales.number }} de {{ editoriales.paginator.num_pages }}.
+                </span>
+
+                {% if editoriales.has_next %}
+                    <a href="?page={{ editoriales.next_page_number }}" class="pag_der">Siguiente</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+    {%endblock %}
+
+ 

@@ -21,22 +21,32 @@
  {%endblock%}
 
  {%block contenido%}
-    <div id="inicio_izq" class="izq">
-        <div class="bloque_inicio">
-            <h2>MANORPA</h2>
+    <div id="acerca_de">
             <img src="{{MEDIA_URL}}/imagen/logo_index.jpg" align="right" style="float:right">
-            <p>Nisi amet non scelerisque mauris, rhoncus odio porttitor turpis nec rhoncus magna, amet turpis ultricies enim nascetur scelerisque penatibus ac magna magnis nisi augue turpis eu eu, eros, turpis purus dolor natoque? Mauris! Natoque velit, pulvinar. Nascetur, enim! Cras pellentesque! Porttitor lorem augue et est et quis penatibus! Velit porttitor duis ac! Turpis rhoncus? Proin rhoncus integer adipiscing, elementum sit, nunc vut enim in ac dis proin placerat ultrices lectus, velit, proin. Et eu nec et montes scelerisque magna pulvinar, mus. Dictumst, integer ac, auctor eu ac, 
-
+            <p>penatibus ac magna magnis nisi augue turpis eu eu, eros, magna magnis nisi augue turpis eu eu, eros turpis purus dolor natoque? Mauris! Natoque velit, pulvinar. Nascetur, enim! Cras pellentesque! Porttitor lorem augue et est et quis penatibus! Velit porttitor duis ac! Turpis rhoncus? Proin rhoncus integer adipiscing, elementum sit, nunc vut enim in ac dis proin placerat ultrices lectus, velit, proin. Et eu nec et montes scelerisque magna pulvinar, mus. Dictumst, integer ac, auctor eu ac, 
             </p>
-                <div class="enlaces_inicio">
-                    <a class="con_flechita" href="/paginas/servicios">Conoce los servicios</a>
-                </div><br><br>
-        </div>
-        <div class="bloque_inicio">
-            <h2>Próximos Eventos</h2>
             <div class="enlaces_inicio">
-                <a id="enlace_estemes" href="#">Este mes</a> <a id="enlace_proximomes" href="#" class="con_flechita">Próximo mes </a> <a href="/eventos" class="con_flechita">Todos los eventos</a> 
-            </div>
+                <a class="con_flechita" href="/paginas/servicios">Conoce los servicios</a>
+            </div><br><br>
+    </div>
+
+    <div class="bloque_inicio noticias">
+        {% for noticia in noticia %}
+        <div class="contenedor_noticia_inicio">
+        <br>
+            {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_160x90}}"></a>{%endif%}
+            <a class="izq"href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
+            <div class="fecha_noticia izq"><i>{{noticia.fecha|date:"d M Y"}}</i></div>
+            <div class="separador"></div>
+            <p>{{noticia.contenido|truncatewords_html:18|safe}}</p>
+        </div>
+        {%endfor%}
+        <div class="enlaces_inicio_manorpa">
+            <a class="sig_flechita" href="/noticias">Todas las noticias</a>
+        </div>
+    </div>
+
+        <div class="bloque_inicio eventos">
             <div id="estemes">
                 <div class="separador"></div><br>
                 {%for eventos in eventos%}
@@ -53,19 +63,27 @@
                 <div class="separador"></div><br>
                 {%endfor%}
             </div>
+            <div class="enlaces_inicio_manorpa">
+                  <a href="/eventos" class="sig_flechita">Todos los eventos</a>  <a id="enlace_proximomes" href="#" class="sig_flechita">Próximo mes </a> <a id="enlace_estemes" href="#">Este mes</a>
+            </div>
+            <div class="separador"></div>
         </div>
-    </div>
-    <div id="inicio_der" class="der">
-        <h2>Noticias</h2>
-        {% for noticia in noticia %}
-        <div class="contenedor_noticia_inicio">
-            {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
-            <a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
-            <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
-        </div>
+
+    <div class="bloque_inicio editorial">
+        {% for editorial in editorial %}
+        <div class="contenedor_editorial_inicio">
+            {%if editorial.autor.imagen %}<a class="izq" href="/editoriales/{{editorial.slug}}"><img src="{{editorial.autor.imagen.url_75x95}}"></a>{%endif%}
+            <div class="editorial_autor"><b>{{editorial.autor.nombre}}</b></div>
+            <div class="editorial_cargo"><i>{{editorial.autor.cargo}}</i></div><br>
+            <a class="izq"href="/editoriales/{{editorial.slug}}">{{editorial.titulo}}</a>
+            <div class="separador"></div>
+            <p>{{editorial.contenido|truncatewords_html:30|safe}}</p>
+
         {%endfor%}
-        <div class="enlaces_inicio">
-            <a class="con_flechita" href="/noticias">Todas las noticias</a>
+        </div>
+        <div class="enlaces_inicio_manorpa">
+            <a class="sig_flechita" href="/editoriales">Todas las editoriales</a>
         </div>
     </div>
+
  {% endblock %}

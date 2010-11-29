@@ -1,0 +1,35 @@
+{%extends "interna.html"%}
+{%load comments%}
+{%load gravatar%}
+{%block title%}Editorial - {{editorial.titulo}}{%endblock%}
+{%block extra_header%}
+
+{%endblock%}
+
+    {%block cuerpo%}
+        <h2>{{editorial.titulo}}</h2>
+        
+        <div id="detalles_noticia" style="width:215px" class="der">
+            <div id="autor_noticia">
+                <b>Autor: </b>{{editorial.autor}}<br>
+                <b>Fecha: </b>{{editorial.fecha|date:"d M Y"}}<br>
+            </div>
+            {%if editorial.autor.imagen %}<img src="{{editorial.autor.imagen.url_200x250}}">{%endif%}
+        </div>
+        <div id="contenido_pagina">
+            {{editorial.contenido|safe}}
+        </div>
+        <br>
+
+        {% if editorial.tags %}
+            <div id="etiquetas" class="der">
+                    <b>Etiquetas: </b><br>
+                    {% for tag in editorial.get_tags %}
+                    <a href="/tags/{{tag.id}}">{{tag}}</a>
+                    {% endfor %}
+            </div>
+        {%endif%}
+        <div class="separador"></div>
+
+
+    {%endblock %}

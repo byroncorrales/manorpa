@@ -58,3 +58,29 @@ def noticia_lista_cat(request,cat_slug):
     dicc = {'noticias': noticia,'categoria':categoria,
            }
     return direct_to_template(request, 'noticias/noticias_lista_cat.html',dicc)
+
+def editorial_detalle(request,slug):
+    '''Muestra el detalle de la editorial'''
+    editorial = get_object_or_404(Editorial, slug=slug)
+    dicc = {'editorial': editorial,
+           }
+    return direct_to_template(request, 'editoriales/editorial_detalle.html',dicc)
+
+def editorial_lista(request):
+    '''Vista para mostrar la lista de editoriales'''
+    editorial_lista = Editorial.objects.all().order_by('-fecha','-id')
+    paginator = Paginator(editorial_lista, 5)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+    try:
+        editorial = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        editorial = paginator.page(paginator.num_pages)
+
+    dicc = {'editoriales': editorial,
+           }
+    return direct_to_template(request, 'editoriales/editorial_lista.html',dicc)

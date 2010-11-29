@@ -55,7 +55,7 @@ class Noticia(models.Model):
     fecha = models.DateField()
     autor = models.ForeignKey(Autor)
     categoria = models.ForeignKey(CategoriaNoticia)
-    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((178, 90), (255, 190)))
+    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((160, 90), (255, 190)))
     contenido = models.TextField('Contenido', blank=True, null=True)
     tags = TagAutocompleteField(help_text='Separar elementos con "," ')
     adjunto = generic.GenericRelation(Adjunto)
