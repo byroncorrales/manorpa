@@ -100,6 +100,7 @@ class Editorial(models.Model):
     autor = models.ForeignKey(Autor)
     contenido = models.TextField('Contenido', blank=True, null=True)
     tags = TagAutocompleteField(help_text='Separar elementos con "," ')
+    adjunto = generic.GenericRelation(Adjunto)
 
     imgDir = 'attachments/imagenes'
 

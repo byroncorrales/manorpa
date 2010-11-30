@@ -15,6 +15,14 @@
                 <b>Fecha: </b>{{editorial.fecha|date:"d M Y"}}<br>
             </div>
             {%if editorial.autor.imagen %}<img src="{{editorial.autor.imagen.url_200x250}}">{%endif%}
+            {%if noticia.adjunto.all %}
+            <div id="archivos_adjuntos">
+                <b>Archivos Adjuntos</b>
+                    {%for adjunto in editorial.adjunto.all%}
+                        <a href="/archivos/{{adjunto.adjunto}}">{{adjunto.nombre}}</a>
+                    {%endfor%}
+            </div>
+            {%endif%}
         </div>
         <div id="contenido_pagina">
             {{editorial.contenido|safe}}

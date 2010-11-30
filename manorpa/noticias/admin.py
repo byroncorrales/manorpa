@@ -34,6 +34,7 @@ class NoticiaAdmin(admin.ModelAdmin):
 class EditorialAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'fecha','autor']
     list_filter = ['autor']
+    inlines = [AdjuntoInline,]
     search_fields = ['titulo']
     save_on_top = True
     date_hierarchy = 'fecha'
