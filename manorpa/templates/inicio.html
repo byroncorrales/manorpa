@@ -40,13 +40,14 @@ seguridad alimentaria y nutricional y la participación ciudadana.
         {% for noticia in noticia %}
         <div class="contenedor_noticia_inicio">
         <br>
-            {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_160x90}}"></a>{%endif%}
-            <a class="izq"href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
+            {%if noticia.imagen %}<a class="izq" href="/noticias/{{noticia.slug}}"><img   src="{{noticia.imagen.url_160x90}}"></a>{%endif%}
+            <a class="titulo_index_noticia izq" href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
             <div class="fecha_noticia izq"><i>{{noticia.fecha|date:"d M Y"}}</i></div>
             <div class="separador"></div>
             <p>{{noticia.contenido|truncatewords_html:18|safe}}</p>
         </div>
         {%endfor%}
+        <div class="separador"></div>
         <div class="enlaces_inicio_manorpa">
             <a class="sig_flechita" href="/noticias">Todas las noticias</a>
         </div>

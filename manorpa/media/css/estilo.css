@@ -402,8 +402,14 @@ b{
     color:#698c45;
     text-decoration:none;
     display:block;
-    width:145px;
+
+
     margin-left:3px;
+}
+
+.titulo_index_noticia{
+    width:145px;
+    #width:140px;
 }
 
 .contenedor_noticia_inicio a:hover{
@@ -419,9 +425,10 @@ b{
     margin-bottom:5px;
     background:#eeeeb9;
     padding:6px;
-    float:left;
+
     margin-left:0px !important;
 }
+
 
 .fecha_noticia{
     font-size:11px;
