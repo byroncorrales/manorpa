@@ -81,6 +81,7 @@ class Archivo(models.Model):
 
     class Meta:
         verbose_name_plural = "Subir Archivos"
+        ordering = ['-fecha']
         
     def categoria(self):
         return self.subcategoria.categoria.nombre

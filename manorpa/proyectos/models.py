@@ -4,6 +4,12 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from thumbs import ImageWithThumbsField
+from tagging.fields import TagField
+from tagging.models import *
+from tagging_autocomplete.models import TagAutocompleteField
+# Regla para que funcionen las migraciones de south con los campos de django-tagging
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^manorpa\.tagging_autocomplete\.models\.TagAutocompleteField"])
 
 ESTADO_CHOICES = (
     (1, 'En Desarrollo'),
@@ -56,6 +62,7 @@ class Proyecto(models.Model):
     financiador = models.ManyToManyField(Financiador, verbose_name ='Cooperantes')
     descripcion = models.TextField('Descripción',blank = True, null = True)
 #    resultados = models.TextField('Resultados',blank = True, null = True)
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
     def __unicode__(self):
         return self.nombre
@@ -63,6 +70,7 @@ class Proyecto(models.Model):
     class Meta:
         verbose_name = "Proyecto"
         verbose_name_plural = "Proyectos"
+        ordering = ['-id']
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
